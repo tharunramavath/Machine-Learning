@@ -179,7 +179,7 @@ Outliers are extreme values that can distort model behavior.
 * Tree-based models are robust to outliers
 * Linear models are sensitive
 
-#### Outlier Detection Techniques Explained
+### Outlier Detection Techniques Explained
 
 ####  Z-Score Method
 - Measures how many standard deviations a data point is from the mean
@@ -193,7 +193,7 @@ Outliers are extreme values that can distort model behavior.
 - Example:
   - Detect unusually high/low exam scores
 
-## Z-Score Formula
+#### Z-Score Formula
 
 The Z-score indicates how many standard deviations a data point ($X$) is from the mean.
 
@@ -207,7 +207,7 @@ $$Z = \frac{X - \mu}{\sigma}$$
 
 
 
-### Why use Z-scores?
+#### Why use Z-scores?
 1. **Standardization:** It allows you to compare data points from different datasets that have different scales or units.
 2. **Probability:** In a standard normal distribution, a Z-score tells you the percentage of data points that fall below or above that specific value.
 3. **Outlier Detection:** Typically, a Z-score greater than $+3$ or less than $-3$ is considered an outlier.
@@ -256,7 +256,7 @@ $$Z = \frac{X - \mu}{\sigma}$$
 - Example:
   - Fraud detection in financial transactions
 
-#### Outlier Treatment Methods explained
+### Outlier Treatment Methods explained
 
 #### Remove Outliers
 - Delete data points that are identified as outliers
@@ -296,7 +296,7 @@ $$Z = \frac{X - \mu}{\sigma}$$
 - Example:
   - Transforming income data to reduce right skew
 
-#### Difference Between Outliers and Noise
+### Difference Between Outliers and Noise
 
 ####  Outliers
 - Data points that significantly differ from the majority of observations
