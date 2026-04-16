@@ -1059,5 +1059,239 @@ Drop, impute, or use model-based approaches depending on context.
 * Financial risk modeling
 * NLP preprocessing
 
+---
+
 ## 9. Conclusion
 Data preprocessing is a critical step in the machine learning pipeline. It ensures that models receive clean, relevant, and well-structured data, which is essential for achieving good performance. By understanding and applying various preprocessing techniques, we can significantly enhance the effectiveness of our models and make more accurate predictions in real-world applications. 
+
+---
+
+## Handling Imbalanced Datasets
+
+### Definition
+
+Handling imbalanced datasets refers to techniques used when the distribution of classes is unequal, where one class (majority) significantly outnumbers the other (minority), causing models to become biased toward the majority class.
+
+---
+
+### Analogy
+
+Imagine a class where 95 students passed and only 5 failed. A model that always predicts “pass” gets 95% accuracy—but completely ignores the failing students. Handling imbalance is about ensuring the model pays attention to the minority (important) cases.
+
+---
+
+### Formal Definition
+
+Given a dataset:
+
+$$
+D = \{(x_i, y_i)\}_{i=1}^{n}, \quad y_i \in \{0,1\}
+$$
+
+where:
+
+$$
+P(y=1) \ll P(y=0)
+$$
+
+The goal is to learn a function:
+
+$$
+h: X \rightarrow Y
+$$
+
+that performs well across all classes, especially the minority class, by minimizing a class-sensitive loss function.
+
+---
+
+## 1. Resampling Methods
+
+### Definition
+Resampling modifies the dataset distribution to balance class proportions.
+
+---
+
+### a) Oversampling (Minority Class)
+
+**Definition:**
+Increase the number of minority samples by duplicating or generating new ones.
+
+**Analogy:**
+Like giving extra practice questions to weaker students so they get equal attention.
+
+#### SMOTE (Synthetic Minority Oversampling Technique)
+
+**Definition:**
+SMOTE generates synthetic samples by interpolating between existing minority points.
+
+**Formal Definition:**
+
+$$
+x_{\text{new}} = x_i + \lambda (x_j - x_i), \quad \lambda \in [0,1]
+$$
+
+- $$x_i$$: minority sample  
+- $$x_j$$: one of its nearest neighbors  
+
+**Intuition:**
+Instead of copying points, SMOTE creates new realistic data points, improving generalization and reducing overfitting.
+
+---
+
+### b) Undersampling (Majority Class)
+
+**Definition:**
+Reduce the number of majority samples to balance the dataset.
+
+**Analogy:**
+Like selecting a smaller, representative group from a large crowd to ensure fairness.
+
+**Trade-off:**
+- Pros: Faster training  
+- Cons: May lose important information  
+
+---
+
+## 2. Algorithmic Adjustments
+
+### Definition
+Modify the learning algorithm to give more importance to minority class errors.
+
+---
+
+### a) Class Weighting
+
+**Definition:**
+Assign higher penalty to misclassifying minority class samples.
+
+**Formal Definition:**
+
+$$
+J = \sum_{i=1}^{n} w_{y_i} \cdot L(y_i, \hat{y}_i)
+$$
+
+- $$w_{y_i}$$: higher for minority class  
+
+**Intuition:**
+The model is “punished more” for ignoring minority cases.
+
+In machine learning, being “punished more” means the loss function assigns a higher penalty to certain errors, making the model prioritize correcting them. In the weighted loss formula:
+
+$$
+J = \sum_{i=1}^{n} w_{y_i} \cdot L(y_i, \hat{y}_i)
+$$
+
+the term $$w_{y_i}$$ acts as a punishment multiplier. For imbalanced datasets, errors on minority classes (e.g., sick patients) are given higher weights, so even if the raw error $$L(y_i, \hat{y}_i)$$ is the same, the total penalty becomes much larger.  
+
+During gradient descent, this creates stronger “pressure” to reduce those high-weight errors, forcing the model to focus more on correctly predicting minority cases, even at the cost of slightly lower accuracy on majority classes.  
+
+Inother words:
+Think of the loss function as a strict teacher. If the teacher gives a small penalty for a mistake, the student might not care much about fixing it. If the teacher gives a massive penalty for that same mistake, the student will work much harder to avoid it.
+
+---
+
+### b) Cost-Sensitive Learning
+
+**Definition:**
+Explicitly define different misclassification costs:
+
+$$
+\text{Cost(FN)} > \text{Cost(FP)}
+$$
+
+**Analogy:**
+Missing a fraud transaction (FN) is worse than flagging a normal one (FP).
+
+---
+
+## 3. Ensemble Methods
+
+### Definition
+Combine multiple models to improve performance on imbalanced data.
+
+---
+
+### a) Boosting
+
+**Definition:**
+Sequentially trains models focusing more on misclassified samples, often minority ones.
+
+**Analogy:**
+A teacher focusing more on students who keep making mistakes.
+
+---
+
+### b) Bagging with Balanced Sampling
+
+**Definition:**
+Train multiple models on balanced subsets of data.
+
+**Intuition:**
+Each model sees a fair representation of classes.
+
+---
+
+## 4. Evaluation Metrics
+
+### Definition
+Use metrics that capture performance on minority class, instead of relying on accuracy.
+
+---
+
+### Why Accuracy Fails
+
+$$
+\text{Accuracy} = \frac{TP + TN}{\text{Total}}
+$$
+
+High accuracy can still ignore minority class completely.
+
+---
+
+### Important Metrics
+
+#### Precision
+
+$$
+\text{Precision} = \frac{TP}{TP + FP}
+$$
+
+- How many predicted positives are correct  
+
+---
+
+#### Recall (Sensitivity)
+
+$$
+\text{Recall} = \frac{TP}{TP + FN}
+$$
+
+- How many actual positives are captured  
+
+---
+
+#### F1 Score
+
+$$
+F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+$$
+
+- Balance between precision and recall  
+
+---
+
+#### ROC-AUC
+- Measures model’s ability to separate classes across thresholds  
+
+---
+
+## Final Insight
+
+Handling imbalance is not just a preprocessing step—it’s a modeling strategy decision:
+
+- Data-level solutions → Resampling  
+- Algorithm-level solutions → Weighting, cost-sensitive learning  
+- Model-level solutions → Ensembles  
+- Evaluation-level solutions → Better metrics  
+
+A strong ML practitioner chooses a combination of these depending on the problem (e.g., fraud detection, medical diagnosis).
