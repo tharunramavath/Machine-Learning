@@ -338,3 +338,155 @@ $$
 | Plane (3D) | $$ax + by + cz + d = 0$$ | Normal vector defines orientation |
 | Line (3D) | $$x = x_0 + \lambda l,\; y = y_0 + \lambda m,\; z = z_0 + \lambda n$$ | Point + direction vector |
 | Hyperplane (nD) | $$\sum w_i x_i + b = 0$$ | Generalization of plane in n-D |
+
+---
+
+
+## Parametric vs Non-Parametric Algorithms
+
+---
+
+### 1. Parametric Algorithms
+
+#### Definition
+Parametric algorithms are machine learning models that assume a fixed functional form for the relationship between input $$X$$ and output $$Y$$ and summarize this relationship using a finite set of parameters.
+
+---
+
+#### Analogy
+Think of fitting a straight line using a ruler. No matter how complex the data is, you are constrained to use a straight line (fixed shape), and you just adjust its slope and position.
+
+---
+
+#### Formal Definition
+
+Assume a predefined function:
+
+$$
+h_\theta(x) = f(x; \theta)
+$$
+
+where:
+- $$f$$ is a fixed functional form (e.g., linear)  
+- $$\theta$$ is a finite set of parameters  
+
+Learn:
+
+$$
+\theta^* = \arg\min_{\theta} \sum_{i=1}^{n} L\left(y_i, h_\theta(x_i)\right)
+$$
+
+---
+
+#### Key Characteristics
+- Strong assumptions (e.g., linearity, Gaussian distribution)  
+- Fixed number of parameters (independent of dataset size)  
+- Faster training and prediction  
+- Works well with smaller datasets  
+- Less flexible (risk of underfitting if assumptions are wrong)  
+
+---
+
+#### Examples
+- Linear Regression  
+- Logistic Regression  
+- Naive Bayes  
+
+---
+
+### 2. Non-Parametric Algorithms
+
+#### Definition
+Non-parametric algorithms are machine learning models that do not assume a fixed functional form and instead adapt their complexity based on the data, often requiring storage of training examples or flexible structures.
+
+---
+
+#### Analogy
+Instead of using a ruler, imagine using a flexible wire that bends to fit the shape of the data points. The more data you have, the more accurately it can adapt.
+
+---
+
+#### Formal Definition
+
+Learn a function:
+
+$$
+h(x) = f(x, D)
+$$
+
+where:
+- $$D$$ is the training dataset  
+- Model complexity grows with $$|D|$$  
+
+No fixed parameter size:
+
+$$
+\text{Number of parameters} \rightarrow \infty \quad \text{as} \quad n \rightarrow \infty
+$$
+
+---
+
+#### Key Characteristics
+- Minimal assumptions about data distribution  
+- Model complexity grows with data  
+- Highly flexible (captures non-linear patterns)  
+- Requires more data to generalize well  
+- Higher computational and memory cost  
+
+---
+
+#### Examples
+- k-Nearest Neighbors (k-NN)  
+- Decision Trees  
+- Random Forest  
+- Support Vector Machines (with non-linear kernels)  
+- Kernel Density Estimation (KDE)  
+
+---
+
+### 3. Core Intuition (Very Important)
+
+- Parametric = Learn parameters → compress data into a fixed-size representation  
+- Non-parametric = Learn structure/data itself → rely on data to define model  
+
+---
+
+### 4. Comparison Table
+
+| Aspect | Parametric Algorithms | Non-Parametric Algorithms |
+|--------|----------------------|--------------------------|
+| Assumptions | Strong (fixed form) | Minimal |
+| Parameters | Fixed, finite | Grow with data |
+| Flexibility | Low | High |
+| Data Requirement | Low | High |
+| Computation | Fast | Slower |
+| Memory Usage | Low | High |
+| Risk | Underfitting | Overfitting |
+
+---
+
+### 5. When to Use
+
+#### Parametric Algorithms
+- When you know or assume the data distribution  
+- When you need fast, interpretable models  
+- When data is limited  
+
+#### Non-Parametric Algorithms
+- When the relationship is complex or non-linear  
+- When you don’t know the data distribution  
+- When you have large datasets  
+
+---
+
+### Final Insight
+
+The choice between parametric and non-parametric models is fundamentally a trade-off between:
+
+- Bias (parametric → high bias, low variance)  
+- Variance (non-parametric → low bias, high variance)  
+
+In practice, modern machine learning (like deep learning) often blends both ideas—fixed architectures (parametric) with high flexibility (non-linear function approximation).
+
+---
+
