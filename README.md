@@ -9,5 +9,6 @@ This repository is not just about learning ML — it is about **mastering it the
 | S.No | Topic Name                  | Status |
 |------|----------------------------|--------|
 | 1    | Data Preprocessing      | ✅     |
-| 2    | Basics Of Machine Learning     | ⏳     |
-| 3    | Supervised Learning: Linear Regression     | ⏳     |
+| 2    | Basics Of Machine Learning     | ✅     |
+| 3    |    Model Generalization & Optimization |   ✅    |
+| 4    | Supervised Learning: Linear Regression     | ✅     |
