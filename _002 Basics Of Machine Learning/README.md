@@ -105,6 +105,831 @@ where $$r_t$$ is the reward at time $$t$$ and $$\gamma \in [0,1]$$ is the discou
 
 ---
 
+## Further Deep Dive into Learning Approaches
+
+---
+
+## Subdivisions of Supervised Learning
+
+### Definition
+Supervised learning can be subdivided based on the type of output variable $$Y$$ the model is trying to predict.
+
+---
+
+### 1. Classification
+
+**Definition:**
+A task where the model predicts discrete/categorical labels.
+
+**Analogy:**
+Like sorting emails into “spam” or “not spam”.
+
+**Formal definition:**
+
+Given:
+
+$$
+Y \in \{1,2,...,K\}
+$$
+
+Learn:
+
+$$
+h: X \rightarrow Y
+$$
+
+---
+
+### 2. Regression
+
+**Definition:**
+A task where the model predicts continuous numerical values.
+
+**Analogy:**
+Predicting house prices based on size and location.
+
+**Formal definition:**
+
+Given:
+
+$$
+Y \in \mathbb{R}
+$$
+
+Learn:
+
+$$
+h: X \rightarrow \mathbb{R}
+$$
+
+---
+
+### 3. Ranking (Optional Advanced Subdivision)
+
+**Definition:**
+Predicts relative ordering instead of exact values.
+
+**Analogy:**
+Like ranking search results on Google.
+
+**Formal definition:**
+
+Learn a scoring function:
+
+$$
+h: X \rightarrow \mathbb{R}
+$$
+
+such that ordering is preserved:
+
+$$
+h(x_i) > h(x_j)
+$$
+
+---
+
+## Subdivisions of Unsupervised Learning
+
+### Definition
+Unsupervised learning is subdivided based on the type of structure or pattern extracted from unlabeled data.
+
+---
+
+### 1. Clustering
+
+**Definition:**
+Group similar data points together.
+
+**Analogy:**
+Grouping customers based on buying behavior.
+
+**Formal definition:**
+
+Partition dataset:
+
+$$
+D = \{x_1, ..., x_n\}
+$$
+
+into clusters:
+
+$$
+C_1, C_2, ..., C_k
+$$
+
+such that intra-cluster similarity is maximized.
+
+---
+
+### 2. Dimensionality Reduction
+
+**Definition:**
+Reduce the number of features while preserving important information.
+
+**Analogy:**
+Summarizing a long book into key points.
+
+**Formal definition:**
+
+$$
+f: \mathbb{R}^d \rightarrow \mathbb{R}^k, \quad k < d
+$$
+
+---
+
+### 3. Density Estimation
+
+**Definition:**
+Estimate the probability distribution of data.
+
+**Analogy:**
+Understanding how data is spread (e.g., where most customers lie).
+
+**Formal definition:**
+
+$$
+P(X)
+$$
+
+---
+
+### 4. Association Rule Learning
+
+**Definition:**
+Discover relationships between variables.
+
+**Analogy:**
+“People who buy bread also buy butter.”
+
+**Formal definition:**
+
+Find rules:
+
+$$
+X \Rightarrow Y
+$$
+
+with support and confidence constraints.
+
+---
+
+## Subdivisions of Semi-Supervised Learning
+
+### Definition
+Semi-supervised learning combines labeled and unlabeled data and is subdivided based on how unlabeled data is used.
+
+---
+
+### 1. Self-Training
+
+**Definition:**
+Model trains on labeled data, then labels unlabeled data itself and retrains.
+
+**Analogy:**
+A student solving unsolved problems using patterns learned from solved ones.
+
+**Formal definition:**
+
+$$
+L \leftarrow L \cup \hat{U}
+$$
+
+---
+
+### 2. Co-Training
+
+**Definition:**
+Two models trained on different feature subsets teach each other.
+
+**Analogy:**
+Two students with different strengths helping each other learn.
+
+**Formal definition:**
+
+Two hypotheses:
+
+$$
+h_1, h_2
+$$
+
+label data for each other iteratively.
+
+---
+
+### 3. Graph-Based Methods
+
+**Definition:**
+Use graph structure to propagate labels.
+
+**Analogy:**
+Friends influencing each other in a network.
+
+**Formal definition:**
+
+$$
+\min_{(i,j) \in E} \sum w_{ij}(y_i - y_j)^2
+$$
+
+---
+
+## Subdivisions of Reinforcement Learning
+
+### Definition
+Reinforcement learning is subdivided based on how the agent learns policies and interacts with the environment.
+
+---
+
+### 1. Model-Free Learning
+
+**Definition:**
+Learns policy directly without modeling environment dynamics.
+
+**Analogy:**
+Learning to play a game by trial and error without knowing rules explicitly.
+
+**Formal definition:**
+
+Learn:
+
+$$
+Q(s,a) \quad \text{or} \quad \pi(a \mid s)
+$$
+
+without estimating transition probabilities.
+
+---
+
+### 2. Model-Based Learning
+
+**Definition:**
+Learns a model of the environment and uses it for planning.
+
+**Analogy:**
+Planning chess moves by simulating future positions.
+
+**Formal definition:**
+
+Learn:
+
+$$
+P(s' \mid s,a), \quad R(s,a)
+$$
+
+then optimize policy.
+
+---
+
+### 3. Policy-Based Methods
+
+**Definition:**
+Directly learn the policy function.
+
+**Analogy:**
+Learning strategy directly rather than evaluating each move.
+
+**Formal definition:**
+
+$$
+\pi_\theta(a \mid s)
+$$
+
+---
+
+### 4. Value-Based Methods
+
+**Definition:**
+Learn value functions to derive policy.
+
+**Analogy:**
+Choosing actions based on expected future rewards.
+
+**Formal definition:**
+
+$$
+Q(s,a) = \mathbb{E}[R]
+$$
+
+---
+
+### 5. Actor-Critic Methods
+
+**Definition:**
+Combine policy (actor) and value (critic) learning.
+
+**Analogy:**
+Actor makes decisions, critic evaluates them.
+
+**Formal definition:**
+
+- Actor: $$\pi_\theta(a \mid s)$$  
+- Critic: $$V(s) \text{ or } Q(s,a)$$  
+
+---
+
+## Big Picture
+
+- Supervised → Predict outputs (classification/regression)  
+- Unsupervised → Discover structure (clustering, patterns)  
+- Semi-supervised → Use limited labels smartly  
+- Reinforcement → Learn via interaction and rewards  
+
+---
+
+## Evaluation Metrics Across Learning Paradigms
+
+---
+
+## 1. Supervised Learning
+
+### Definition
+Evaluation metrics in supervised learning measure how close predictions $$\hat{y}$$ are to true labels $$y$$.
+
+---
+
+### Classification Metrics
+
+**Analogy:**
+Like evaluating an exam not just by total marks, but also by how many correct answers, mistakes, and missed questions.
+
+---
+
+## Confusion Matrix
+
+### Definition
+
+A confusion matrix is a table used to evaluate classification models by comparing actual labels vs predicted labels, showing how many predictions are correct and where errors occur.
+
+---
+
+### Analogy
+
+Think of a teacher checking exam answers:
+
+- Correct answers → True predictions  
+- Wrong answers → Errors  
+
+The confusion matrix is like a detailed report card showing what kind of mistakes were made.
+
+---
+
+### Structure (Binary Classification)
+
+|                | Predicted Positive | Predicted Negative |
+|----------------|------------------|-------------------|
+| Actual Positive | True Positive (TP) | False Negative (FN) |
+| Actual Negative | False Positive (FP) | True Negative (TN) |
+
+---
+
+### Meaning of Each Term
+
+- **True Positive (TP):** Model correctly predicts positive  
+- **True Negative (TN):** Model correctly predicts negative  
+- **False Positive (FP):** Model predicts positive but actually negative (Type I error)  
+- **False Negative (FN):** Model predicts negative but actually positive (Type II error)  
+
+---
+
+### Formal Definition
+
+Let:
+
+- $$y$$ = actual label  
+- $$\hat{y}$$ = predicted label  
+
+Then:
+
+$$
+TP = \{y = 1, \hat{y} = 1\}
+$$
+
+$$
+TN = \{y = 0, \hat{y} = 0\}
+$$
+
+$$
+FP = \{y = 0, \hat{y} = 1\}
+$$
+
+$$
+FN = \{y = 1, \hat{y} = 0\}
+$$
+
+---
+
+### Metrics Derived from Confusion Matrix
+
+---
+
+#### Accuracy
+
+$$
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+$$
+
+- Measures overall correctness  
+- Misleading for imbalanced datasets  
+
+**Finance Example**
+
+- Loan Approval Model  
+- Predict: Default / No Default  
+
+- Accuracy = % of correct predictions  
+
+**Problem:**  
+- If 95% customers don’t default → model predicting “No Default” always gives 95% accuracy → misleading  
+
+---
+
+#### Precision
+
+$$
+\text{Precision} = \frac{TP}{TP + FP}
+$$
+
+- Of predicted positives, how many are correct  
+
+**Finance Example**
+
+Fraud Detection  
+
+Precision = Of all flagged frauds, how many are actually fraud?  
+
+- High precision → fewer false fraud alerts  
+- Important for reducing customer inconvenience  
+---
+
+#### Recall (Sensitivity)
+
+$$
+\text{Recall} = \frac{TP}{TP + FN}
+$$
+
+- Of actual positives, how many are captured  
+
+**Finance Example**
+
+Credit Card Fraud Detection  
+
+Recall = How many actual fraud cases are caught?  
+
+- High recall → fewer frauds missed  
+- Critical because missing fraud = direct financial loss  
+
+---
+
+#### F1 Score
+
+$$
+F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+$$
+
+- Balance between precision and recall  
+
+**Finance Example**
+
+Used when both false positives & false negatives matter  
+
+Example:  
+Fraud detection systems balancing:  
+- Customer friction (FP)  
+- Financial loss (FN) 
+
+---
+
+#### Specificity
+
+$$
+\text{Specificity} = \frac{TN}{TN + FP}
+$$
+
+- Ability to correctly identify negatives  
+
+---
+
+#### ROC-AUC
+- Measures model’s ability to separate classes across thresholds  
+
+The ROC curve is a graphical tool used to evaluate the performance of a classification model across different thresholds.
+
+#### Key Idea
+
+It shows the trade-off between:
+
+#### True Positive Rate (TPR / Recall / Sensitivity)
+
+$$
+TPR = \frac{TP}{TP + FN}
+$$
+
+#### False Positive Rate (FPR)
+
+$$
+FPR = \frac{FP}{FP + TN}
+$$
+
+---
+
+#### Interpretation
+
+- Each point on the ROC curve = a different classification threshold  
+- A good model:
+  - High TPR (detects positives well)  
+  - Low FPR (few false alarms)  
+- The closer the curve is to the **top-left corner**, the better  
+
+---
+
+#### AUC (Area Under Curve)
+
+- AUC = 1 → Perfect model  
+- AUC = 0.5 → Random guessing  
+- Higher AUC = better separability  
+
+---
+
+#### Intuition
+
+ROC answers:
+
+**“How well can the model distinguish between classes regardless of threshold?”**
+
+
+---
+
+### B. Regression Metrics
+
+**Analogy:**
+Like measuring how far your predicted marks are from actual marks.
+
+---
+
+#### Mean Squared Error (MSE)
+
+$$
+\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+$$
+
+---
+
+#### Root Mean Squared Error (RMSE)
+
+$$
+\text{RMSE} = \sqrt{\text{MSE}}
+$$
+
+---
+
+#### Mean Absolute Error (MAE)
+
+$$
+\text{MAE} = \frac{1}{n} \sum |y_i - \hat{y}_i|
+$$
+
+---
+
+### R² (Coefficient of Determination)
+
+### Definition
+
+R² measures how well a regression model explains the variance in the target variable $$Y$$ using input features $$X$$.
+
+---
+
+### Analogy
+
+Imagine trying to explain a student’s marks.
+
+- If your model explains almost all variation in marks → high R²  
+- If it explains nothing → low R²  
+
+It tells: “How much of the story your model is able to explain.”
+
+---
+
+### Formal Definition
+
+$$
+R^2 = 1 - \frac{\text{Unexplained Variance}}{\text{Total Variance}}
+$$
+
+---
+
+### Expanded Form
+
+$$
+R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
+$$
+
+Where:
+
+- $$\sum (y_i - \hat{y}_i)^2$$ = Residual Sum of Squares (RSS)  
+- $$\sum (y_i - \bar{y})^2$$ = Total Sum of Squares (TSS)  
+
+---
+
+### Key Insight
+
+- $$R^2 = 1$$ → Perfect fit  
+- $$R^2 = 0$$ → Model is no better than mean  
+- $$R^2 < 0$$ → Model is worse than mean  
+
+---
+
+### Problem with R²
+
+### Definition
+
+R² always increases (or stays same) when you add more features—even if those features are useless.
+
+---
+
+### Analogy
+
+Like adding more variables in an exam explanation—even irrelevant ones—your explanation looks better numerically but not actually meaningful.
+
+---
+
+### Adjusted R²
+
+### Definition
+
+Adjusted R² corrects R² by penalizing unnecessary features, giving a more realistic measure of model performance.
+
+---
+
+### Analogy
+
+Think of a strict teacher who only rewards meaningful explanations and penalizes unnecessary extra points.
+
+---
+
+### Formal Definition
+
+$$
+\text{Adjusted } R^2 = 1 - \left( \frac{(1 - R^2)(n - 1)}{n - p - 1} \right)
+$$
+
+Where:
+
+- $$n$$ = number of data points  
+- $$p$$ = number of features  
+
+---
+
+### Key Insight
+
+- Increases only if new feature improves model genuinely  
+- Decreases if feature is irrelevant  
+- Helps in feature selection  
+
+---
+
+### R² vs Adjusted R² (Core Difference)
+
+| Aspect | R² | Adjusted R² |
+|--------|----|-------------|
+| Feature addition | Always increases | Increases only if useful |
+| Penalization | No | Yes |
+| Reliability | Can be misleading | More reliable |
+| Use case | Basic evaluation | Model comparison |
+
+---
+
+## 2. Unsupervised Learning
+
+### Definition
+Since there are no true labels, evaluation focuses on structure, similarity, or distribution quality.
+
+---
+
+### A. Clustering Metrics
+
+**Analogy:**
+Like checking whether groups formed in a classroom actually make sense.
+
+---
+
+#### Silhouette Score
+
+$$
+S = \frac{b - a}{\max(a,b)}
+$$
+
+- $$a$$: intra-cluster distance  
+- $$b$$: nearest-cluster distance  
+
+---
+
+#### Davies–Bouldin Index
+
+$$
+DB = \frac{1}{k} \sum \max \left( \frac{\sigma_i + \sigma_j}{d(c_i, c_j)} \right)
+$$
+
+- Lower is better  
+
+---
+
+#### Calinski-Harabasz Index
+- Ratio of between-cluster to within-cluster variance  
+- Higher is better  
+
+---
+
+### B. Dimensionality Reduction Metrics
+
+#### Reconstruction Error
+
+$$
+\|X - \hat{X}\|^2
+$$
+
+- Measures information loss  
+
+---
+
+#### Explained Variance (PCA)
+- Fraction of variance retained  
+
+---
+
+### C. Density Estimation Metrics
+
+#### Log-Likelihood
+
+$$
+\sum \log P(x_i)
+$$
+
+- Higher is better  
+
+---
+
+## 3. Semi-Supervised Learning
+
+### Definition
+Evaluation is typically done using supervised metrics, since final predictions are on labeled data.
+
+---
+
+### Metrics Used
+
+- Classification → Accuracy, Precision, Recall, F1, ROC-AUC  
+- Regression → MSE, RMSE, MAE  
+
+---
+
+### Additional Consideration
+
+#### Label Efficiency
+- How well the model performs with limited labeled data  
+
+---
+
+## 4. Reinforcement Learning
+
+### Definition
+Evaluation measures how well an agent maximizes cumulative reward over time.
+
+---
+
+### Key Metrics
+
+#### Cumulative Reward
+
+$$
+G_t = \sum_{t=0}^{\infty} \gamma^t r_t
+$$
+
+- Total reward obtained  
+
+---
+
+#### Average Reward
+
+$$
+\frac{1}{T} \sum_{t=1}^{T} r_t
+$$
+
+---
+
+#### Policy Performance
+- Expected return under policy $$\pi$$  
+
+---
+
+#### Regret
+
+$$
+\text{Regret} = \text{Optimal Reward} - \text{Obtained Reward}
+$$
+
+- Measures how far agent is from optimal  
+
+---
+
 ## Types of Model Learning Approaches
 
 ### 1. Instance-Based Learning (Lazy Learning)
