@@ -1,3 +1,43 @@
+## Table of Contents
+
+1. [Basic Of Machine Learning](#basic-of-machine-learning)
+   - [Hierarchy & Relationship](#hierarchy--relationship)
+   - [Comparison Table](#comparison-table)
+   - [Practical Example](#practical-example)
+   - [Key Takeaway](#key-takeaway)
+   - [Types of ML](#types-of-ml)
+
+2. [Types of ML Explained](#types-of-ml-explained-in-detail)
+   - [Supervised Learning](#supervised-learning)
+   - [Unsupervised Learning](#unsupervised-learning)
+   - [Semi-Supervised Learning](#semi-supervised-learning)
+   - [Reinforcement Learning](#reinforcement-learning)
+
+3. [Further Deep Dive into Learning Approaches](#further-deep-dive-into-learning-approaches)
+   - [Subdivisions of Supervised Learning](#subdivisions-of-supervised-learning)
+   - [Subdivisions of Unsupervised Learning](#subdivisions-of-unsupervised-learning)
+   - [Subdivisions of Semi-Supervised Learning](#subdivisions-of-semi-supervised-learning)
+   - [Subdivisions of Reinforcement Learning](#subdivisions-of-reinforcement-learning)
+
+4. [Evaluation Metrics Across Learning Paradigms](#evaluation-metrics-across-learning-paradigms)
+   - [Supervised Learning](#1-supervised-learning)
+   - [Unsupervised Learning](#2-unsupervised-learning)
+   - [Semi-Supervised Learning](#3-semi-supervised-learning)
+   - [Reinforcement Learning](#4-reinforcement-learning)
+
+5. [Types of Model Learning Approaches](#types-of-model-learning-approaches)
+   - [Instance-Based Learning](#1-instance-based-learning-lazy-learning)
+   - [Model-Based Learning](#2-model-based-learning-eager-learning)
+   - [Memory-Based / Hybrid Approaches](#3-memory-based--hybrid-approaches-other-learning-styles)
+   - [Lazy Learning](#4-lazy-learning)
+   - [Eager Learning](#5-eager-learning)
+
+6. [Parametric vs Non-Parametric Algorithms](#parametric-vs-non-parametric-algorithms)
+   - [Parametric Algorithms](#1-parametric-algorithms)
+   - [Non-Parametric Algorithms](#2-non-parametric-algorithms)
+
+---
+
 ## Basic Of Machine Learning
 
 
@@ -49,12 +89,20 @@ DS is the practice that orchestrates everything to deliver value.
 
 ---
 
+[Back to Table of Contents](#table-of-contents)
+
+---
+
 ## Types of ML:
 
 - Supervised Learning  
 - Unsupervised Learning  
 - Semi-Supervised Learning  
 - Reinforcement Learning  
+
+---
+
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
@@ -102,6 +150,10 @@ E\left[\sum_{t=0}^{\infty} \gamma^t r_t \right]
 $$
 
 where $$r_t$$ is the reward at time $$t$$ and $$\gamma \in [0,1]$$ is the discount factor.
+
+---
+
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
@@ -432,6 +484,10 @@ Actor makes decisions, critic evaluates them.
 - Unsupervised → Discover structure (clustering, patterns)  
 - Semi-supervised → Use limited labels smartly  
 - Reinforcement → Learn via interaction and rewards  
+
+---
+
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
@@ -797,6 +853,10 @@ Where:
 
 ---
 
+[Back to Table of Contents](#table-of-contents)
+
+---
+
 ## 2. Unsupervised Learning
 
 ### Definition
@@ -867,6 +927,10 @@ $$
 
 ---
 
+[Back to Table of Contents](#table-of-contents)
+
+---
+
 ## 3. Semi-Supervised Learning
 
 ### Definition
@@ -927,6 +991,10 @@ $$
 $$
 
 - Measures how far agent is from optimal  
+
+---
+
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
@@ -1166,6 +1234,9 @@ $$
 
 ---
 
+[Back to Table of Contents](#table-of-contents)
+
+---
 
 ## Parametric vs Non-Parametric Algorithms
 
@@ -1312,6 +1383,10 @@ The choice between parametric and non-parametric models is fundamentally a trade
 - Variance (non-parametric → low bias, high variance)  
 
 In practice, modern machine learning (like deep learning) often blends both ideas—fixed architectures (parametric) with high flexibility (non-linear function approximation).
+
+---
+
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
