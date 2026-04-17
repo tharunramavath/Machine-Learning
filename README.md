@@ -12,3 +12,5 @@ This repository is not just about learning ML — it is about **mastering it the
 | 2    | Basics Of Machine Learning     | ✅     |
 | 3    |    Model Generalization & Optimization |   ✅    |
 | 4    | Supervised Learning: Linear Regression     | ✅     |
+
+In progress: stay tuned for more!
