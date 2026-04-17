@@ -14,15 +14,15 @@
    - [Intuition of Learning Process](#intuition-of-learning-process)
    - [Summary Insight](#summary-insight)
 
-2. [Ordinary Least Squares (OLS)](#ordinary-least-squares-ols--linear-regression)
+2. [Ordinary Least Squares (OLS)](#ordinary-least-squares-ols)
    - [Definition](#definition-1)
    - [Analogy](#analogy-1)
    - [Cost Function (Objective)](#cost-function-objective)
    - [Interpretation](#interpretation)
    - [Error Behavior](#error-behavior)
    - [Key Results from OLS](#key-results-from-ols)
-   - [Intercept](#intercept)
-   - [Slope](#slope)
+   - [Intercept](#intercept-beta_0)
+   - [Slope](#slope-beta_1)
    - [Formal Definition (Optimization View)](#formal-definition-optimization-view)
    - [Key Properties of OLS](#key-properties-of-ols)
 
@@ -43,7 +43,7 @@
 
 ---
 
-## Linear Regression {#linear-regression}
+## Linear Regression
 
 ### Definition
 
@@ -210,7 +210,7 @@ $$
 
 ---
 
-## Ordinary Least Squares (OLS) {#ordinary-least-squares-ols--linear-regression}
+## Ordinary Least Squares (OLS)
 
 ### Definition
 
@@ -305,7 +305,7 @@ $$
 
 ---
 
-## Assumptions of Linear Regression (OLS) {#assumptions-of-linear-regression-ols}
+## Assumptions of Linear Regression (OLS)
 
 ### Definition
 
@@ -493,7 +493,7 @@ Linear Regression works best when data behaves “clean and simple”
 
 ---
 
-## Limitations of Linear Regression (OLS) {#limitations-of-linear-regression-ols}
+## Limitations of Linear Regression (OLS)
 
 ### 1. Assumes Linearity
 
