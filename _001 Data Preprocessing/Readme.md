@@ -1,5 +1,40 @@
 # Data Preprocessing 
 
+## Table of Contents
+
+1. [Conceptual Foundation](#1-conceptual-foundation)
+   - [What is Data Preprocessing?](#what-is-data-preprocessing)
+   - [Intuition](#intuition)
+
+2. [Core Data Preprocessing Techniques](#2-core-data-preprocessing-techniques)
+   - [Handling Missing Values](#1-handling-missing-values)
+   - [Handling Outliers](#2-handling-outliers)
+   - [Feature Scaling](#3-feature-scaling)
+   - [Encoding Categorical Variables](#4-encoding-categorical-variables)
+   - [Feature Engineering](#5-feature-engineering)
+   - [Feature Selection](#6-feature-selection)
+
+3. [Important Terminologies](#3-important-terminologies)
+
+4. [Hyperparameter Tuning in Preprocessing](#4-hyperparameter-tuning-in-preprocessing)
+   - [Techniques](#techniques)
+
+5. [When to Use / When Not to Use Preprocessing](#5-when-to-use--when-not-to-use-preprocessing)
+
+6. [Comparison of Techniques](#6-comparison-of-techniques)
+
+7. [Interview Questions](#7-interview-questions)
+
+8. [Real-World Applications](#8-real-world-applications)
+
+9. [Conclusion](#9-conclusion)
+
+10. [Handling Imbalanced Datasets](#handling-imbalanced-datasets)
+   - [Resampling Methods](#1-resampling-methods)
+   - [Algorithmic Adjustments](#2-algorithmic-adjustments)
+   - [Ensemble Methods](#3-ensemble-methods)
+   - [Evaluation Metrics](#4-evaluation-metrics)
+
 ---
 
 ## 1. Conceptual Foundation
@@ -24,6 +59,10 @@ Preprocessing ensures:
 ### Intuition
 
 A machine learning model is only as good as the data it receives. If the input is flawed, the output will also be flawed. Preprocessing ensures that the model receives meaningful and standardized inputs.
+
+---
+
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
@@ -720,6 +759,10 @@ $$
 
 ---
 
+[Back to Table of Contents](#table-of-contents)
+
+---
+
 ## 3. Important Terminologies
 
 * Imputation: Filling missing values
@@ -753,6 +796,10 @@ $$
 * Cold Start Problem: A situation in recommendation systems where the model lacks enough data about new users or items to provide accurate suggestions.
 
 * A/B Testing: A randomized experiment where two versions of a model are compared to determine which one performs better in a live environment.
+---
+
+[Back to Table of Contents](#table-of-contents)
+
 ---
 
 ## 4. Hyperparameter Tuning in Preprocessing
@@ -869,6 +916,10 @@ Preprocessing itself involves parameters that need tuning.
 
 ---
 
+[Back to Table of Contents](#table-of-contents)
+
+---
+
 ## 5. When to Use / When Not to Use Preprocessing
 
 ### Use Preprocessing When
@@ -886,6 +937,10 @@ Preprocessing itself involves parameters that need tuning.
 
 ---
 
+[Back to Table of Contents](#table-of-contents)
+
+---
+
 ## 6. Comparison of Techniques
 
 | Technique           | Use Case              | Advantage            | Limitation                |
@@ -895,6 +950,10 @@ Preprocessing itself involves parameters that need tuning.
 | Imputation          | Missing values        | Preserves data       | May introduce bias        |
 | Feature Selection   | High dimensional data | Reduces overfitting  | May lose information      |
 | Feature Engineering | Any dataset           | Improves performance | Requires domain knowledge |
+
+---
+
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
@@ -1061,8 +1120,20 @@ Drop, impute, or use model-based approaches depending on context.
 
 ---
 
+[Back to Table of Contents](#table-of-contents)
+
+---
+
+[Back to Table of Contents](#table-of-contents)
+
+---
+
 ## 9. Conclusion
 Data preprocessing is a critical step in the machine learning pipeline. It ensures that models receive clean, relevant, and well-structured data, which is essential for achieving good performance. By understanding and applying various preprocessing techniques, we can significantly enhance the effectiveness of our models and make more accurate predictions in real-world applications. 
+
+---
+
+[Back to Table of Contents](#table-of-contents)
 
 ---
 
@@ -1295,3 +1366,7 @@ Handling imbalance is not just a preprocessing step—it’s a modeling strategy
 - Evaluation-level solutions → Better metrics  
 
 A strong ML practitioner chooses a combination of these depending on the problem (e.g., fraud detection, medical diagnosis).
+
+---
+
+[Back to Table of Contents](#table-of-contents)
